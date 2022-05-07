@@ -1,6 +1,26 @@
+use clap::Parser;
 use rand::{self, Rng};
 
+//  ----------------------
+//  Command Line Interface
+//  ----------------------
+
+#[derive(Parser)]
+#[clap(author, version, about, long_about = None)]
+struct CLI {
+    #[clap(long)]
+    name: String
+}
+
+
+//  ----
+//  MAIN
+//  ----
+
 fn main() {
+    let cli =  CLI::parse();
+    println!("{}", cli.name);
+
     //  Collect the parsed arguments in a vector
     let args: Vec<String> = std::env::args().collect::<Vec<String>>()[1..].to_vec();
 
