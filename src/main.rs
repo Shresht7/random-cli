@@ -21,6 +21,7 @@ struct CLI {
 #[derive(Subcommand)]
 enum CMD {
     Number { num1: i32, num2: Option<i32> },
+    Roll { die: String },
     Select { entries: Vec<String> },
 }
 
@@ -39,6 +40,9 @@ fn main() {
     match &cli.commands {
         CMD::Number { num1, num2 } => {
             commands::number(num1.to_owned(), num2.to_owned(), &mut rng);
+        }
+        CMD::Roll { die } => {
+            commands::roll(die, &mut rng);
         }
         CMD::Select { entries } => {
             commands::select(entries, &mut rng);
