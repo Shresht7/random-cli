@@ -22,9 +22,16 @@ struct CLI {
 
 #[derive(Subcommand)]
 enum CMD {
-    Number { num1: i32, num2: Option<i32> },
-    Roll { die: String },
-    Select { entries: Vec<String> },
+    Number {
+        num1: Option<i32>,
+        num2: Option<i32>,
+    },
+    Roll {
+        die: String,
+    },
+    Select {
+        entries: Vec<String>,
+    },
 }
 
 //  ----

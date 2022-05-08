@@ -2,7 +2,8 @@ use rand::Rng;
 
 /// Generates and prints a random number between zero and the given input
 /// If two numbers are provided, it will generate a random number between those numbers
-pub fn number(num1: i32, num2: Option<i32>) {
+pub fn number(num1: Option<i32>, num2: Option<i32>) {
+    let num1 = num1.unwrap_or(1000);
     let result: i32 = match num2 {
         Some(num2) => get_random_number_between(num1, num2),
         None => get_random_number(num1),
