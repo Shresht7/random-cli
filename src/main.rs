@@ -31,6 +31,9 @@ enum CMD {
     },
     Select {
         entries: Vec<String>,
+
+        #[clap(short, long, default_value_t = 1)]
+        repeat: u8,
     },
 }
 
@@ -42,18 +45,16 @@ fn main() {
     //  Parse Command Line Interface
     let cli = CLI::parse();
 
-    for _ in 0..cli.repeat {
-        //  Match Sub-Commands
-        match &cli.commands {
-            CMD::Number { num1, num2 } => {
-                commands::number(num1.to_owned(), num2.to_owned());
-            }
-            CMD::Roll { die } => {
-                commands::roll(die);
-            }
-            CMD::Select { entries } => {
-                commands::select(entries);
-            }
+    //  Match Sub-Commands
+    match &cli.commands {
+        CMD::Number { num1, num2 } => {
+            commands::number(num1.to_owned(), num2.to_owned());
+        }
+        CMD::Roll { die } => {
+            commands::roll(die);
+        }
+        CMD::Select { entries, repeat } => {
+            commands::select(entries, repeat.to_owned());
         }
     }
 }
