@@ -11,9 +11,6 @@ mod commands;
 struct CLI {
     #[clap(subcommand)]
     commands: CMD,
-
-    #[clap(short, long, default_value_t = 1)]
-    repeat: u8,
 }
 
 //  ------------
