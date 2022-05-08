@@ -18,7 +18,20 @@ struct CLI {
 
 #[derive(Subcommand)]
 enum Commands {
+    Number { num1: i32, num2: Option<i32> },
     Select { entries: Vec<String> },
+}
+
+fn number(num1: i32, num2: Option<i32>, rng: &mut ThreadRng) {
+    let result: i32 = match num2 {
+        Some(num2) => {
+            let low = std::cmp::min(num1, num2);
+            let max = std::cmp::max(num1, num2);
+            rng.gen_range(low..max)
+        }
+        None => rng.gen_range(0..num1.to_owned()),
+    };
+    println!("{}", result);
 }
 
 fn select(entries: &Vec<String>, rng: &mut ThreadRng) {
@@ -39,6 +52,9 @@ fn main() {
 
     //  Match Sub-Commands
     match &cli.commands {
+        Commands::Number { num1, num2 } => {
+            number(num1.to_owned(), num2.to_owned(), &mut rng);
+        }
         Commands::Select { entries } => {
             select(entries, &mut rng);
         }
