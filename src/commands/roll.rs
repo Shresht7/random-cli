@@ -1,6 +1,9 @@
-use rand::{prelude::ThreadRng, Rng};
+use rand::{Rng};
 
-pub fn roll(die: &str, rng: &mut ThreadRng) {
+pub fn roll(die: &str) {
+    //  Initialize the rng
+    let mut rng = rand::thread_rng();
+
     //  Split string and retrieve die number and range
     let mut die_split = die.split("d");
     let number_of_die: u32 = match die_split.next() {

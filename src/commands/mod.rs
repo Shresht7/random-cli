@@ -1,7 +1,7 @@
 mod number;
-mod select;
 mod roll;
+mod select;
 
 pub use number::*;
-pub use select::*;
 pub use roll::*;
+pub use select::*;

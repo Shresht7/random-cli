@@ -1,5 +1,4 @@
 use clap::{Parser, Subcommand};
-use rand;
 
 mod commands;
 
@@ -30,22 +29,19 @@ enum CMD {
 //  ----
 
 fn main() {
-    //  Initialize random number generator
-    let mut rng = rand::thread_rng();
-
     //  Parse Command Line Interface
     let cli = CLI::parse();
 
     //  Match Sub-Commands
     match &cli.commands {
         CMD::Number { num1, num2 } => {
-            commands::number(num1.to_owned(), num2.to_owned(), &mut rng);
+            commands::number(num1.to_owned(), num2.to_owned());
         }
         CMD::Roll { die } => {
-            commands::roll(die, &mut rng);
+            commands::roll(die);
         }
         CMD::Select { entries } => {
-            commands::select(entries, &mut rng);
+            commands::select(entries);
         }
     }
 }
