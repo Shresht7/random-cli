@@ -13,19 +13,40 @@ struct CLI {
     commands: CMD,
 }
 
-//  ------------
-//  Sub-Commands
-//  ------------
+//  --------
+//  Commands
+//  --------
 
 #[derive(Subcommand)]
 enum CMD {
+    /// Generate a random number
+    ///
+    /// If only one number is specified, the command will generate a number between zero and num1.
+    /// If two numbers are specified, the command will generate a number between those two numbers.
+    /// If no parameters are specified, the command will default to generate a number between 0 and 1000
+    ///
+    /// Examples:
+    /// random number           -   Generates a number between 0 and 1000
+    /// random number 10        -   Generates a number between 0 and 10
+    /// random number 10 15     -   Generates a number between 10 and 15
     Number {
+        /// First Number
         num1: Option<i32>,
+        /// Second Number
         num2: Option<i32>,
     },
-    Roll {
-        die: String,
-    },
+
+    /// Roll die
+    ///
+    /// Roll die accepts input in the {n}d{S} format; where {n} is the number of dice thrown
+    /// and {S} is the number of sides each die has. (example: 3d8 - Three 8-sided die)
+    /// defaults to 1d20
+    ///
+    /// Examples:
+    /// random die          -   Rolls one twenty-sided die
+    /// random die 1d6      -   Rolls one six-sided die
+    /// random die 3d12     -   Rolls three twelve-sided die
+    Roll { die: String },
     Select {
         entries: Vec<String>,
 
