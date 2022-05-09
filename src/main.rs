@@ -28,5 +28,6 @@ fn main() {
         Commands::Roll(command) => command.execute(),
         Commands::Select(command) => command.execute(),
         Commands::String(command) => command.execute(),
+        Commands::Toss(command) => command.execute(),
     }
 }
