@@ -1,6 +1,6 @@
 # Random CLI
 
-A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas.
+A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas. There is probably something in your life that can use a bit of randomness.
 
 ## Usage
 
@@ -8,11 +8,19 @@ A command-line interface to do random stuff. Generate random strings and numbers
 random [COMMAND] [FLAGS]
 ```
 
-Use the `help` command to see more details. `random help` or `random --help`.
+Use the `help` command to see more details. `random help` or `random --help` or `random [COMMAND] --help`.
 
 ---
 
 ## Commands
+
+| Command  | Description                           |
+| -------- | ------------------------------------- |
+| `select` | Select one entry from a list randomly |
+| `number` | Generate a random number              |
+| `string` | Generate a random string              |
+| `toss`   | Toss a coin                           |
+| `roll`   | Roll a die                            |
 
 ### Select
 
@@ -26,9 +34,23 @@ random select [...ENTRIES]
 
 Takes a variable amount of arguments representing the list of all entries.
 
+```sh
+random select one two three four five ...
+```
+
+Can also accept input from a redirected stdin.
+
+```sh
+gh repo list | random select
+```
+
 #### Flags
 
 You can use the `--repeat` flag to select multiple items from the list
+
+```sh
+gh repo list | random select --repeat 3
+```
 
 #### Examples
 
