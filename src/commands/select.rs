@@ -4,6 +4,14 @@ use clap::Args;
 use rand::Rng;
 
 /// Select one entry from the given inputs
+///
+/// Inputs can also be piped from stdin
+///
+/// Examples:
+///
+/// random select pizza burger pasta    -   Selects either pizza, burger or pasta
+///
+/// gh repo list | random select        -   Select one entry piped through stdin
 #[derive(Args)]
 pub struct Select {
     entries: Vec<String>,
