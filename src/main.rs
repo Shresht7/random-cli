@@ -14,9 +14,9 @@ struct CLI {
     commands: Commands,
 }
 
-//  ----
+//  ====
 //  MAIN
-//  ----
+//  ====
 
 fn main() {
     //  Parse Command Line Interface

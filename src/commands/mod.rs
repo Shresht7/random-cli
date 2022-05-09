@@ -1,5 +1,9 @@
 use clap::Subcommand;
 
+//  ========
+//  COMMANDS
+//  ========
+
 mod number;
 mod roll;
 mod select;
