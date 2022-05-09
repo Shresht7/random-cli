@@ -1,15 +1,47 @@
+use clap::Args;
 use rand::Rng;
 
-/// Generates and prints a random number between zero and the given input
-/// If two numbers are provided, it will generate a random number between those numbers
-pub fn number(num1: Option<i32>, num2: Option<i32>) {
-    let num1 = num1.unwrap_or(1000);
-    let result: i32 = match num2 {
-        Some(num2) => get_random_number_between(num1, num2),
-        None => get_random_number(num1),
-    };
-    println!("{}", result);
+// ======
+// NUMBER
+// ======
+
+/// Generate a random number
+///
+/// If only one number is specified, the command will generate a number between zero and num1.
+/// If two numbers are specified, the command will generate a number between those two numbers.
+/// If no parameters are specified, the command will default to generate a number between 0 and 1000
+///
+/// Examples:
+///
+/// random number           -   Generates a number between 0 and 1000
+///
+/// random number 10        -   Generates a number between 0 and 10
+///
+/// random number 10 15     -   Generates a number between 10 and 15
+#[derive(Args)]
+pub struct Number {
+    /// First Number
+    pub num1: Option<i32>,
+    /// Second Number
+    pub num2: Option<i32>,
 }
+
+impl Number {
+    /// Generates and prints a random number between zero and the given input
+    /// If two numbers are provided, it will generate a random number between those numbers
+    pub fn execute(self: &Self) {
+        let num1 = self.num1.unwrap_or(1000);
+        let result: i32 = match self.num2 {
+            Some(num2) => get_random_number_between(num1, num2),
+            None => get_random_number(num1),
+        };
+        println!("{}", result);
+    }
+}
+
+//  ----------------
+//  HELPER FUNCTIONS
+//  ----------------
 
 /// Get random number between zero and the provided parameter
 fn get_random_number(num1: i32) -> i32 {
