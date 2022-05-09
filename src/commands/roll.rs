@@ -14,7 +14,7 @@ use rand::Rng;
 #[derive(Args)]
 #[clap(verbatim_doc_comment)]
 pub struct Roll {
-    pub die: String,
+    die: String,
 }
 
 impl Roll {

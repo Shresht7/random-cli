@@ -19,9 +19,9 @@ use rand::Rng;
 #[clap(verbatim_doc_comment)]
 pub struct Number {
     /// First Number
-    pub num1: Option<i32>,
+    num1: Option<i32>,
     /// Second Number
-    pub num2: Option<i32>,
+    num2: Option<i32>,
 
     /// Repeat the command this many times
     #[clap(short, long, default_value_t = 1)]
