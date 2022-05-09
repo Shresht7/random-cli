@@ -5,35 +5,49 @@ use rand::{self, Rng};
 // TOSS
 // ====
 
-/// Toss a coin
+/// Retrieve a random boolean
+///
+/// Returns a random boolean result (default: 50-50 chance)
+/// Probability to get true can be adjusted using the --weight flag (default: 0.5)
+/// Using the --coin flag outputs Heads / Tails instead of true / false
 #[derive(Args)]
 #[clap(verbatim_doc_comment)]
 pub struct Toss {
+    /// Probabilistic weight to get truthy value
     #[clap(short, long, default_value_t = 0.5)]
     weight: f64,
 
+    /// Results in Heads or Tails
     #[clap(short, long)]
     coin: bool,
 
+    /// Number of times to repeat command execution
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
 }
 
 impl Toss {
     pub fn execute(self: &Self) {
-        let mut rng = rand::thread_rng();
+        let mut result: Vec<String> = Vec::new();
+
+        let mut rng = rand::thread_rng(); //  Initialize RNG
+
         for _ in 00..self.repeat {
-            let result: bool = rng.gen_bool(self.weight);
-    
+            let b: bool = rng.gen_bool(self.weight);
+
             if self.coin {
-                let result = match result {
-                    true => "H",
-                    false => "T",
+                //  If --coin, reformat results as Heads / Tails
+                let coin_result = match b {
+                    true => "Heads",
+                    false => "Tails",
                 };
-                println!("{}", result);
+                result.push(coin_result.to_string());
             } else {
-                println!("{}", result);
+                //  Return true / false as normal
+                result.push(b.to_string());
             }
         }
+
+        println!("{}", result.join("\n"));
     }
 }
