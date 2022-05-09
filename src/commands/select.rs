@@ -1,5 +1,6 @@
 use std::io::Read;
 
+use atty::Stream;
 use clap::Args;
 use rand::Rng;
 
@@ -13,8 +14,10 @@ use rand::Rng;
 #[derive(Args)]
 #[clap(verbatim_doc_comment)]
 pub struct Select {
+    /// List of entries to choose from
     entries: Vec<String>,
 
+    /// The number of times to repeat the execution
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
 }
@@ -26,7 +29,10 @@ impl Select {
 
         //  Read input from stdin
         let mut lines = String::new();
-        std::io::stdin().read_to_string(&mut lines).unwrap();
+        if !atty::is(Stream::Stdin) {
+            //  Read stdin only if redirected using a pipe
+            std::io::stdin().read_to_string(&mut lines).unwrap();
+        }
         for line in lines.lines() {
             entries.push(String::from(line));
         }
