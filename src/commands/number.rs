@@ -12,13 +12,11 @@ use rand::Rng;
 /// If no parameters are specified, the command will default to generate a number between 0 and 1000
 ///
 /// Examples:
-///
 /// random number           -   Generates a number between 0 and 1000
-///
 /// random number 10        -   Generates a number between 0 and 10
-///
 /// random number 10 15     -   Generates a number between 10 and 15
 #[derive(Args)]
+#[clap(verbatim_doc_comment)]
 pub struct Number {
     /// First Number
     pub num1: Option<i32>,

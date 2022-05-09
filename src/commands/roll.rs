@@ -8,13 +8,11 @@ use rand::Rng;
 /// defaults to 1d20
 ///
 /// Examples:
-/// 
 /// random die          -   Rolls one twenty-sided die
-/// 
 /// random die 1d6      -   Rolls one six-sided die
-/// 
 /// random die 3d12     -   Rolls three twelve-sided die
 #[derive(Args)]
+#[clap(verbatim_doc_comment)]
 pub struct Roll {
     pub die: String,
 }
