@@ -14,16 +14,20 @@ use rand::Rng;
 #[derive(Args)]
 #[clap(verbatim_doc_comment)]
 pub struct Roll {
-    die: String,
+    /// The dice to roll in {n}d{S} format
+    die: Option<String>,
 }
 
 impl Roll {
     pub fn execute(self: &Self) {
-        //  Initialize the rng
-        let mut rng = rand::thread_rng();
+        //  Read user-input or take default die
+        let die = match self.die.to_owned() {
+            Some(x) => x,
+            None => String::from("1d20"),
+        };
 
         //  Split string and retrieve die number and range
-        let mut die_split = self.die.split("d");
+        let mut die_split = die.split("d");
         let number_of_die: u32 = match die_split.next() {
             Some(x) => x.parse::<u32>().expect("Failed to parse as u32"),
             None => 1,
@@ -36,12 +40,13 @@ impl Roll {
             .expect("Failed to parse as u32");
 
         //  Calculate and return result
-        let mut result = 0;
-        let mut i = 0;
-        while i < number_of_die {
-            result = result + rng.gen_range(1..=range_of_die);
-            i += 1;
+        let mut result = Vec::new();
+        for _ in 0..number_of_die {
+            let n = rand::thread_rng().gen_range(1..=range_of_die);
+            result.push(n);
         }
-        println!("{}", result);
+
+        //  Show results
+        println!("Rolls: {:?} = {}", result, result.iter().sum::<u32>());
     }
 }
