@@ -22,16 +22,28 @@ pub struct Number {
     pub num1: Option<i32>,
     /// Second Number
     pub num2: Option<i32>,
+
+    /// Repeat the command this many times
+    #[clap(short, long, default_value_t = 1)]
+    repeat: u8,
 }
 
 impl Number {
     pub fn execute(self: &Self) {
+        let mut result: Vec<String> = Vec::new(); //  Vector to store results
+
+        //  Generate the random numbers and store the results
         let num1 = self.num1.unwrap_or(1000);
-        let result: i32 = match self.num2 {
-            Some(num2) => get_random_number_between(num1, num2),
-            None => get_random_number(num1),
-        };
-        println!("{}", result);
+        for _ in 0..self.repeat {
+            let n: i32 = match self.num2 {
+                Some(num2) => get_random_number_between(num1, num2),
+                None => get_random_number(num1),
+            };
+            result.push(n.to_string());
+        }
+
+        //  Show the results
+        println!("{}", result.join("\n"));
     }
 }
 
