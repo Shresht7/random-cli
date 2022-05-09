@@ -4,6 +4,10 @@ use atty::Stream;
 use clap::Args;
 use rand::Rng;
 
+//  ======
+//  SELECT
+//  ======
+
 /// Select one entry from the given inputs
 ///
 /// Inputs can also be piped from stdin

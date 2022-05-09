@@ -1,6 +1,10 @@
 use clap::Args;
 use rand::Rng;
 
+//  ====
+//  ROLL
+//  ====
+
 /// Roll die
 ///
 /// Roll die accepts input in the {n}d{S} format; where {n} is the number of dice thrown
