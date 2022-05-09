@@ -27,5 +27,6 @@ fn main() {
         Commands::Number(command) => command.execute(),
         Commands::Roll(command) => command.execute(),
         Commands::Select(command) => command.execute(),
+        Commands::String(command) => command.execute(),
     }
 }
