@@ -157,6 +157,35 @@ random roll                         # Rolls a 1d20
 random roll 3d8                     # Rolls 3d8
 ```
 
+### Shuffle
+
+Shuffles the given list.
+
+```sh
+random shuffle [...ENTRIES]
+```
+
+#### Arguments
+
+Takes a variable amount of arguments representing the list of all entries.
+
+```sh
+random shuffle one two three four five ...
+```
+
+Can also accept input from a redirected stdin.
+
+```sh
+gh repo list | random shuffle
+```
+
+#### Examples
+
+```sh
+random shuffle 1 2 3 4 5 6 7 8 9        # Selects either pizza, burger or pasta
+gh repo list | random shuffle           # Select one entry piped through stdin
+```
+
 ---
 
 ## 📑 License
