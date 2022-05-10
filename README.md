@@ -22,7 +22,7 @@ Use the `help` command to see more details. `random help` or `random --help` or 
 | [`toss`](#toss)     | Toss a coin                           |
 | [`roll`](#roll)     | Roll a die                            |
 
-### Select
+### 💻 Select
 
 Randomly select one entry from a list.
 
@@ -60,7 +60,7 @@ gh repo list | random select            # Select one entry piped through stdin
 ```
 
 
-### Number
+### 💻 Number
 
 Generate random numbers.
 
@@ -89,7 +89,7 @@ random number 5 15              # Generates a number between 5 and 15
 random number 5 10 --repeat 5   # Generate 5 numbers between 5 and 15     
 ```
 
-### String
+### 💻 String
 
 Generate random strings using alphanumeric and special characters.
 
@@ -111,7 +111,7 @@ random string --length 8                # Generates a radom 8-character string
 random string --length 8 --repeat 3     # Generates three 8-character strings
 ```
 
-### Toss
+### 💻 Toss
 
 Generates a random boolean (50% chance to return `true` and `false`).
 
@@ -136,7 +136,7 @@ random toss --coin                  # Flip a coin
 random toss --coin --repeat 3       # Toss three coins
 ```
 
-### Roll
+### 💻 Roll
 
 Roll a die.
 
@@ -157,7 +157,7 @@ random roll                         # Rolls a 1d20
 random roll 3d8                     # Rolls 3d8
 ```
 
-### Shuffle
+### 💻 Shuffle
 
 Shuffles the given list.
 
