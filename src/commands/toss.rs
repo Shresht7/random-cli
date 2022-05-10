@@ -5,7 +5,7 @@ use rand::{self, Rng};
 // TOSS
 // ====
 
-/// Retrieve a random boolean
+/// Generate a random boolean
 ///
 /// Returns a random boolean result (default: 50-50 chance)
 /// Probability to get true can be adjusted using the --weight flag (default: 0.5)
