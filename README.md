@@ -2,7 +2,7 @@
 
 A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas. There is probably something in your life that can use a bit of randomness.
 
-## Usage
+## 📖 Usage
 
 ```sh
 random [COMMAND] [FLAGS]
@@ -12,19 +12,19 @@ Use the `help` command to see more details. `random help` or `random --help` or 
 
 ---
 
-## Commands
+## 🖋 Commands
 
-| Command  | Description                           |
-| -------- | ------------------------------------- |
-| `select` | Select one entry from a list randomly |
-| `number` | Generate a random number              |
-| `string` | Generate a random string              |
-| `toss`   | Toss a coin                           |
-| `roll`   | Roll a die                            |
+| Command             | Description                           |
+| ------------------- | ------------------------------------- |
+| [`select`](#select) | Select one entry from a list randomly |
+| [`number`](#number) | Generate a random number              |
+| [`string`](#string) | Generate a random string              |
+| [`toss`](#toss)     | Toss a coin                           |
+| [`roll`](#roll)     | Roll a die                            |
 
 ### Select
 
-Select one entry from a given list randomly
+Randomly select one entry from a list.
 
 ```sh
 random select [...ENTRIES]
@@ -46,7 +46,7 @@ gh repo list | random select
 
 #### Flags
 
-You can use the `--repeat` flag to select multiple items from the list
+`--repeat`: Number of times to repeat the execution of this command.
 
 ```sh
 gh repo list | random select --repeat 3
@@ -62,7 +62,7 @@ gh repo list | random select            # Select one entry piped through stdin
 
 ### Number
 
-Generate random numbers
+Generate random numbers.
 
 ```sh
 random number [NUM1] [NUM2]
@@ -78,7 +78,7 @@ random number [NUM1] [NUM2]
 
 #### Flags
 
-You can use the `--repeat` flag to generate multiple random numbers
+`--repeat`: Number of times to repeat the execution of this command.
 
 #### Examples
 
@@ -91,7 +91,7 @@ random number 5 10 --repeat 5   # Generate 5 numbers between 5 and 15
 
 ### String
 
-Generate random strings using alphanumeric and special characters
+Generate random strings using alphanumeric and special characters.
 
 ```sh
 random string
@@ -99,9 +99,9 @@ random string
 
 #### Flags
 
-You can use the `--length` flag to specify the length of the generated strings. (defaults to `16`)
+`--length`: Specify the length of the generated strings (default: `16`).
 
-You can use the `--repeat` flag to generate multiple random strings.
+`--repeat`: Number of times to repeat the execution of this command.
 
 #### Examples
 
@@ -113,7 +113,7 @@ random string --length 8 --repeat 3     # Generates three 8-character strings
 
 ### Toss
 
-Generates a random boolean (`50/50` chance)
+Generates a random boolean (50% chance to return `true` and `false`).
 
 ```sh
 random toss
@@ -121,23 +121,24 @@ random toss
 
 #### Flags
 
-The weights can be adjusted using the `--weight` flag. (defaults to `0.5`)
+`--weight`: Probabilistic weight of getting `true` (default: `0.5`)
 
-The `--coin` flag reformats the result as `Heads` or `Tails`
+`--coin`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
 
-The `--repeat` flag allows you execute the command multiple times
+`--repeat`: Number of times to repeat the execution of this command.
+
 
 #### Examples
 
 ```sh
 random toss                         # Generates a random boolean
 random toss --coin                  # Flip a coin
-radom toss --coin --repeat 3        # Toss three coins
+random toss --coin --repeat 3       # Toss three coins
 ```
 
 ### Roll
 
-Rolls die
+Roll a die.
 
 ```sh
 random roll [DIE]
@@ -147,17 +148,17 @@ random roll [DIE]
 
 Roll die `[DIE]` accepts input in the `{n}d{S}` format; where `{n}` is the number of dice thrown and `{S}` is the number of sides each die has. (example: `3d8` - Three 8-sided die)
 
-defaults to `1d20`
+default: `1d20`
 
 #### Examples
 
 ```sh
-random roll                     # Rolls a 1d20
-random roll 3d8                 # Rolls 3d8
+random roll                         # Rolls a 1d20
+random roll 3d8                     # Rolls 3d8
 ```
 
 ---
 
-## License
+## 📑 License
 
 > [MIT License](./LICENSE)
