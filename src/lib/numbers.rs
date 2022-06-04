@@ -8,9 +8,9 @@ pub fn get_random_number(num1: i32) -> i32 {
 
 ///  Get random number between the two provided parameters
 pub fn get_random_number_between(num1: i32, num2: i32) -> i32 {
-    let low = std::cmp::min(num1, num2);
+    let min = std::cmp::min(num1, num2);
     let max = std::cmp::max(num1, num2);
-    return rand::thread_rng().gen_range(low..max);
+    return rand::thread_rng().gen_range(min..max);
 }
 
 #[cfg(test)]
