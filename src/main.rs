@@ -1,7 +1,7 @@
 //  Library
 use clap::Parser;
 
-mod lib;
+pub mod lib;
 
 mod commands;
 use commands::Commands;
