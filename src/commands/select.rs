@@ -1,8 +1,10 @@
+//  Library
 use std::io::Read;
 
 use atty::Stream;
 use clap::Args;
-use rand::Rng;
+
+use crate::lib::select;
 
 //  ======
 //  SELECT
@@ -41,11 +43,17 @@ impl Select {
             entries.push(String::from(line));
         }
 
-        for _ in 00..self.repeat {
-            //  Select one entry at random
-            let selection = rand::thread_rng().gen_range(0..entries.len());
-            //  Show results
-            println!("{}", entries[selection]);
-        }
+        //  Select one or multiple entries based on the repeat flag
+        let result = match self.repeat > 1 {
+            true => select::select_multiple(&entries, self.repeat as u32)
+                        .iter()
+                        .map(|(v, _)| v.to_owned())
+                        .collect::<Vec<String>>()
+                        .join(" "),
+            false => select::select(&entries).0,
+        };
+
+        //  Show the result
+        println!("{}", result);
     }
 }
