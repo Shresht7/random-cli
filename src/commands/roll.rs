@@ -21,6 +21,14 @@ use clap::Args;
 pub struct Roll {
     /// The dice to roll in {n}d{S} format
     die: Option<String>,
+
+    /// Roll the die with advantage. Take the greatest value
+    #[clap(short='a', long)]
+    with_advantage: bool,
+
+    /// Roll the die with disadvantage. Take the smallest value
+    #[clap(short='d', long)]
+    with_disadvantage: bool,
 }
 
 impl Roll {
@@ -32,11 +40,19 @@ impl Roll {
         };
 
         //  Roll the die
-        let result = die::roll(&die);
+        let mut result = die::roll(&die);
 
         //  Show results
         println!("Rolls: {:?} = {}", result, result.iter().sum::<u32>());
+
+        result.sort();
+
+        if self.with_advantage {
+            println!("With Advantage: {}", result.last().unwrap());
+        }
+
+        if self.with_disadvantage {
+            println!("With Disadvantage: {}", result.first().unwrap());
+        }
     }
 }
-
-//  TODO: Roll with advantage/disadvantage. (Issue #4)
