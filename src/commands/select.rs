@@ -37,7 +37,7 @@ impl Select {
                 .iter()
                 .map(|(v, _)| v.to_owned())
                 .collect::<Vec<String>>()
-                .join(" "),
+                .join("\n"),
 
             false => select::select(&entries).0,
         };
