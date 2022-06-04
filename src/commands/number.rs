@@ -1,5 +1,6 @@
+//  Library
 use clap::Args;
-use rand::Rng;
+use crate::lib::numbers;
 
 // ======
 // NUMBER
@@ -36,8 +37,8 @@ impl Number {
         let num1 = self.num1.unwrap_or(1000);
         for _ in 0..self.repeat {
             let n: i32 = match self.num2 {
-                Some(num2) => get_random_number_between(num1, num2),
-                None => get_random_number(num1),
+                Some(num2) => numbers::get_random_number_between(num1, num2),
+                None => numbers::get_random_number(num1),
             };
             result.push(n.to_string());
         }
@@ -45,20 +46,4 @@ impl Number {
         //  Show the results
         println!("{}", result.join("\n"));
     }
-}
-
-//  ----------------
-//  HELPER FUNCTIONS
-//  ----------------
-
-/// Get random number between zero and the provided parameter
-fn get_random_number(num1: i32) -> i32 {
-    return rand::thread_rng().gen_range(0..num1);
-}
-
-///  Get random number between the two provided parameters
-fn get_random_number_between(num1: i32, num2: i32) -> i32 {
-    let low = std::cmp::min(num1, num2);
-    let max = std::cmp::max(num1, num2);
-    return rand::thread_rng().gen_range(low..max);
 }
