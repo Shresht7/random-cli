@@ -1,8 +1,6 @@
-use std::io::Read;
-
-use atty::Stream;
+//  Library
+use crate::lib::{helpers, select};
 use clap::Args;
-use rand::Rng;
 
 //  ======
 //  SELECT
@@ -27,25 +25,24 @@ pub struct Select {
 }
 
 impl Select {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
+        //  Read input redirected from standard input
+        helpers::read_stdin_into(&mut entries);
 
-        //  Read input from stdin
-        let mut lines = String::new();
-        if !atty::is(Stream::Stdin) {
-            //  Read stdin only if redirected using a pipe
-            std::io::stdin().read_to_string(&mut lines).unwrap();
-        }
-        for line in lines.lines() {
-            entries.push(String::from(line));
-        }
+        //  Select one or multiple entries based on the repeat flag
+        let result = match self.repeat > 1 {
+            true => select::select_multiple(&entries, self.repeat as u32)
+                .iter()
+                .map(|(v, _)| v.to_owned())
+                .collect::<Vec<String>>()
+                .join(" "),
 
-        for _ in 00..self.repeat {
-            //  Select one entry at random
-            let selection = rand::thread_rng().gen_range(0..entries.len());
-            //  Show results
-            println!("{}", entries[selection]);
-        }
+            false => select::select(&entries).0,
+        };
+
+        //  Show the result
+        println!("{}", result);
     }
 }

@@ -1,5 +1,6 @@
+//  Library
+use crate::lib::numbers;
 use clap::Args;
-use rand::Rng;
 
 // ======
 // NUMBER
@@ -20,24 +21,25 @@ use rand::Rng;
 pub struct Number {
     /// First Number
     num1: Option<i32>,
+
     /// Second Number
     num2: Option<i32>,
 
-    /// Repeat the command this many times
+    /// The number of times to repeat the command
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
 }
 
 impl Number {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         let mut result: Vec<String> = Vec::new(); //  Vector to store results
 
         //  Generate the random numbers and store the results
         let num1 = self.num1.unwrap_or(1000);
         for _ in 0..self.repeat {
             let n: i32 = match self.num2 {
-                Some(num2) => get_random_number_between(num1, num2),
-                None => get_random_number(num1),
+                Some(num2) => numbers::get_random_number_between(num1, num2),
+                None => numbers::get_random_number(num1),
             };
             result.push(n.to_string());
         }
@@ -45,20 +47,4 @@ impl Number {
         //  Show the results
         println!("{}", result.join("\n"));
     }
-}
-
-//  ----------------
-//  HELPER FUNCTIONS
-//  ----------------
-
-/// Get random number between zero and the provided parameter
-fn get_random_number(num1: i32) -> i32 {
-    return rand::thread_rng().gen_range(0..num1);
-}
-
-///  Get random number between the two provided parameters
-fn get_random_number_between(num1: i32, num2: i32) -> i32 {
-    let low = std::cmp::min(num1, num2);
-    let max = std::cmp::max(num1, num2);
-    return rand::thread_rng().gen_range(low..max);
 }
