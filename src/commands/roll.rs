@@ -1,5 +1,5 @@
+use crate::lib::die;
 use clap::Args;
-use rand::Rng;
 
 //  ====
 //  ROLL
@@ -30,25 +30,8 @@ impl Roll {
             None => String::from("1d20"),
         };
 
-        //  Split string and retrieve die number and range
-        let mut die_split = die.split("d");
-        let number_of_die: u32 = match die_split.next() {
-            Some(x) => x.parse::<u32>().expect("Failed to parse as u32"),
-            None => 1,
-        };
-
-        let range_of_die: u32 = die_split
-            .next()
-            .expect("failed to retrieve range")
-            .parse::<u32>()
-            .expect("Failed to parse as u32");
-
-        //  Calculate and return result
-        let mut result = Vec::new();
-        for _ in 0..number_of_die {
-            let n = rand::thread_rng().gen_range(1..=range_of_die);
-            result.push(n);
-        }
+        //  Roll the die
+        let result = die::roll(&die);
 
         //  Show results
         println!("Rolls: {:?} = {}", result, result.iter().sum::<u32>());
