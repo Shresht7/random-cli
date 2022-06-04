@@ -30,7 +30,7 @@ impl Toss {
     pub fn execute(self: &Self) {
         let mut result: Vec<String> = Vec::new();
 
-        let mut rng = rand::thread_rng(); //  Initialize RNG
+        let mut rng = rand::thread_rng();
 
         for _ in 00..self.repeat {
             let b: bool = rng.gen_bool(self.weight);

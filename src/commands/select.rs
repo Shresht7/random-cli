@@ -28,6 +28,7 @@ impl Select {
     pub fn execute(self: &Self) {
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
+        //  Read input redirected from standard input
         helpers::read_stdin_into(&mut entries);
 
         //  Select one or multiple entries based on the repeat flag

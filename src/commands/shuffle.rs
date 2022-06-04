@@ -24,13 +24,12 @@ pub struct Shuffle {
 
 impl Shuffle {
     pub fn execute(self: &Self) {
-        //  Initialize rng
-        let mut rng = rand::thread_rng();
-
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
-        //  Read standard input
+        //  Read input redirected to standard input
         helpers::read_stdin_into(&mut entries);
+
+        let mut rng = rand::thread_rng();
 
         //  Shuffle entries
         let mut shuffle: Vec<String> = Vec::new();
