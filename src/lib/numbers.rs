@@ -17,12 +17,18 @@ pub fn get_random_number_between(num1: i32, num2: i32) -> i32 {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_get_random_number() {
-        let result = get_random_number(10);
-        if result < 0 || result > 10 {
+    /// Check whether the result is within the range of min and max
+    fn check_range(min: i32, result: i32, max: i32) {
+        if result < min || result > max {
             panic!("Result not in range");
         }
+    }
+
+    #[test]
+    fn test_get_random_number() {
+        let max = 10;
+        let result = get_random_number(max);
+        check_range(0, result, max);
     }
 
     #[test]
@@ -30,8 +36,6 @@ mod tests {
         let min = 5;
         let max = 12;
         let result = get_random_number_between(min, max);
-        if result < min || result > max {
-            panic!("Result not in range");
-        }
+        check_range(min, result, max);
     }
 }
