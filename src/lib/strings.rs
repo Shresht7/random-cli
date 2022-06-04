@@ -2,6 +2,10 @@
 use rand::distributions::Alphanumeric;
 use rand::Rng;
 
+//  --------------
+//  CHARACTER SETS
+//  --------------
+
 pub const LOWERCASE_ALPHABETS: &[u8] = b"abcdefghijklmnopqrstuvwxyz";
 pub const UPPERCASE_ALPHABETS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 pub const ALPHABETS: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,7 +26,7 @@ pub enum Charset {
 }
 
 impl Charset {
-    fn get(&self) -> &'static [u8] {
+    fn get(&self) -> &[u8] {
         match self {
             Charset::LowercaseAlphabets => LOWERCASE_ALPHABETS,
             Charset::UppercaseAlphabets => UPPERCASE_ALPHABETS,
@@ -36,10 +40,17 @@ impl Charset {
     }
 }
 
+//  =======
+//  STRINGS
+//  =======
+
 /// Generate a random string of given length
 pub fn generate_random(charset: &Charset, length: usize) -> String {
-    let mut rng = rand::thread_rng();
-    let charset = charset.get();
+    let mut rng = rand::thread_rng(); //  Initialize RNG
+
+    let charset = charset.get(); //  Fetch Character Set
+
+    //  Generate string using the charset
     (00..length)
         .map(|_| {
             let index = rng.gen_range(00..charset.len());
@@ -57,30 +68,32 @@ pub fn generate_alphanumeric(length: usize) -> String {
         .collect()
 }
 
+//  -----
+//  TESTS
+//  -----
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn generate_lowercase_alphabets() {
-        let res = generate_random(&Charset::LowercaseAlphabets, 10);
-        let lower_res = res.to_ascii_lowercase();
+        let str = generate_random(&Charset::LowercaseAlphabets, 10);
         assert!(
-            res.chars().all(|x| x.is_lowercase()),
+            str.chars().all(|x| x.is_lowercase()),
             "expected: {}\nactual: {}",
-            lower_res,
-            res
+            str.to_lowercase(),
+            str
         );
     }
 
     #[test]
     fn generate_uppercase_alphabets() {
         let res = generate_random(&Charset::UppercaseAlphabets, 10);
-        let upper_res = res.to_ascii_uppercase();
         assert!(
             res.chars().all(|x| x.is_uppercase()),
             "expected: {}\nactual: {}",
-            upper_res,
+            res.to_uppercase(),
             res
         );
     }
@@ -113,6 +126,11 @@ mod tests {
     fn generate_using_custom_charset() {
         let length = 5;
         let res = generate_random(&Charset::Custom(b"111"), length);
-        assert_eq!(res, "1".repeat(length));
+        assert_eq!(
+            res,
+            "1".repeat(length),
+            "Does not use custom charset: {}",
+            res
+        );
     }
 }

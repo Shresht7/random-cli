@@ -1,18 +1,29 @@
 //  Library
 use rand::Rng;
 
+//  =======
+//  SHUFFLE
+//  =======
+
 /// Shuffles the given vector
 pub fn shuffle<T: Clone>(vector: &Vec<T>) -> Vec<T> {
     let mut vector = vector.clone(); //  Mutable clone
     let mut shuffle: Vec<T> = Vec::new(); //  Shuffled Vector
-    let mut rng = rand::thread_rng();
+
+    let mut rng = rand::thread_rng(); //  Initialize RNG
+
     while vector.len() > 0 {
         let index = rng.gen_range(0..vector.len());
         shuffle.push(vector[index].clone());
         vector.remove(index);
     }
+
     return shuffle;
 }
+
+//  -----
+//  TESTS
+//  -----
 
 #[cfg(test)]
 mod tests {

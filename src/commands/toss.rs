@@ -1,3 +1,4 @@
+//  Library
 use clap::Args;
 use rand::{self, Rng};
 
@@ -27,11 +28,12 @@ pub struct Toss {
 }
 
 impl Toss {
-    pub fn execute(self: &Self) {
-        let mut result: Vec<String> = Vec::new();
+    pub fn execute(&self) {
+        let mut result: Vec<String> = Vec::new();   //  Vector to store the results
 
         let mut rng = rand::thread_rng();
 
+        //  Toss
         for _ in 00..self.repeat {
             let b: bool = rng.gen_bool(self.weight);
 
@@ -48,6 +50,7 @@ impl Toss {
             }
         }
 
+        //  Show results
         println!("{}", result.join("\n"));
     }
 }

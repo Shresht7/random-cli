@@ -21,7 +21,7 @@ pub struct Shuffle {
 }
 
 impl Shuffle {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
         //  Read input redirected to standard input

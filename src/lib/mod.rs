@@ -1,4 +1,7 @@
-//  Library
+//  =======
+//  LIBRARY
+//  =======
+
 pub mod die;
 pub mod helpers;
 pub mod numbers;

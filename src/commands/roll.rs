@@ -1,3 +1,4 @@
+//  Library
 use crate::lib::die;
 use clap::Args;
 
@@ -23,7 +24,7 @@ pub struct Roll {
 }
 
 impl Roll {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         //  Read user-input or take default die
         let die = match self.die.to_owned() {
             Some(x) => x,
@@ -37,3 +38,5 @@ impl Roll {
         println!("Rolls: {:?} = {}", result, result.iter().sum::<u32>());
     }
 }
+
+//  TODO: Roll with advantage/disadvantage. (Issue #4)

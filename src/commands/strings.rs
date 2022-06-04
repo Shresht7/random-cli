@@ -26,14 +26,16 @@ pub struct Strings {
 }
 
 impl Strings {
-    pub fn execute(self: &Self) {
-        let mut result: Vec<String> = Vec::new();
+    pub fn execute(&self) {
+        let mut result: Vec<String> = Vec::new(); //  Vector to store results
 
+        //  Generate random strings and store in results
         for _ in 00..self.repeat {
             let s: String = strings::generate_random(&self.charset, self.length as usize);
             result.push(s);
         }
 
+        //  Show results
         println!("{}", result.join("\n"));
     }
 }
@@ -45,7 +47,7 @@ impl Strings {
 /// Implement FromStr trait for Charset to allow mapping
 ///  command-line argument strings to the Charset enum
 impl FromStr for strings::Charset {
-    type Err = clap::Error;
+    type Err = clap::Error;     //? Handle the error properly
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_lowercase().as_str() {
@@ -56,7 +58,7 @@ impl FromStr for strings::Charset {
             "alphanumeric" => Ok(Self::Alphanumeric),
             "special" => Ok(Self::Special),
             "all" => Ok(Self::All),
-            _ => Ok(Self::All),
+            _ => Ok(Self::All),     //? Should let the user know that this was an invalid charset
         }
     }
 }

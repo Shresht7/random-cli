@@ -1,6 +1,6 @@
 //  Library
-use clap::Args;
 use crate::lib::numbers;
+use clap::Args;
 
 // ======
 // NUMBER
@@ -21,16 +21,17 @@ use crate::lib::numbers;
 pub struct Number {
     /// First Number
     num1: Option<i32>,
+
     /// Second Number
     num2: Option<i32>,
 
-    /// Repeat the command this many times
+    /// The number of times to repeat the command
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
 }
 
 impl Number {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         let mut result: Vec<String> = Vec::new(); //  Vector to store results
 
         //  Generate the random numbers and store the results

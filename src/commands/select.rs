@@ -25,7 +25,7 @@ pub struct Select {
 }
 
 impl Select {
-    pub fn execute(self: &Self) {
+    pub fn execute(&self) {
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
         //  Read input redirected from standard input
@@ -38,6 +38,7 @@ impl Select {
                 .map(|(v, _)| v.to_owned())
                 .collect::<Vec<String>>()
                 .join(" "),
+
             false => select::select(&entries).0,
         };
 

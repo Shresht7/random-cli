@@ -1,6 +1,10 @@
 //  Library
 use rand::Rng;
 
+//  =======
+//  NUMBERS
+//  =======
+
 /// Get random number between zero and the provided parameter
 pub fn get_random_number(num1: i32) -> i32 {
     return rand::thread_rng().gen_range(0..num1);
@@ -12,6 +16,10 @@ pub fn get_random_number_between(num1: i32, num2: i32) -> i32 {
     let max = std::cmp::max(num1, num2);
     return rand::thread_rng().gen_range(min..max);
 }
+
+//  -----
+//  TESTS
+//  -----
 
 #[cfg(test)]
 mod tests {
