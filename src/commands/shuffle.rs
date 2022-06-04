@@ -1,8 +1,8 @@
-use std::io::Read;
-
-use atty::Stream;
+//  Library
 use clap::Args;
 use rand::Rng;
+
+use crate::lib::helpers;
 
 //  =======
 //  SHUFFLE
@@ -29,17 +29,9 @@ impl Shuffle {
 
         //  Clone a mutable shadow of entries
         let mut entries = self.entries.clone();
+        //  Read standard input
+        helpers::read_stdin_into(&mut entries);
 
-        //  Read input from stdin
-        let mut lines = String::new();
-        if !atty::is(Stream::Stdin) {
-            //  Read stdin only if redirected using a pipe
-            std::io::stdin().read_to_string(&mut lines).unwrap();
-        }
-        for line in lines.lines() {
-            entries.push(String::from(line));
-        }
-        
         //  Shuffle entries
         let mut shuffle: Vec<String> = Vec::new();
         while entries.len() > 0 {
