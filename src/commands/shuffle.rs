@@ -1,8 +1,6 @@
 //  Library
+use crate::lib::{helpers, shuffle};
 use clap::Args;
-use rand::Rng;
-
-use crate::lib::helpers;
 
 //  =======
 //  SHUFFLE
@@ -29,15 +27,8 @@ impl Shuffle {
         //  Read input redirected to standard input
         helpers::read_stdin_into(&mut entries);
 
-        let mut rng = rand::thread_rng();
-
         //  Shuffle entries
-        let mut shuffle: Vec<String> = Vec::new();
-        while entries.len() > 0 {
-            let idx = rng.gen_range(0..entries.len());
-            shuffle.push(entries[idx].clone());
-            entries.remove(idx);
-        }
+        let shuffle = shuffle::shuffle(&entries);
 
         //  Show results
         println!("{}", shuffle.join(" "));
