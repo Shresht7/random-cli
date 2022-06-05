@@ -18,6 +18,10 @@ use clap::Args;
 pub struct Shuffle {
     /// List of entries to choose from
     entries: Vec<String>,
+
+    /// String to use to separate results
+    #[clap(short, long, default_value = " ")]
+    separator: String,
 }
 
 impl Shuffle {
@@ -31,6 +35,6 @@ impl Shuffle {
         let shuffle = shuffle::shuffle(&entries);
 
         //  Show results
-        println!("{}", shuffle.join(" "));
+        println!("{}", shuffle.join(&self.separator));
     }
 }

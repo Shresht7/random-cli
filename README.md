@@ -27,6 +27,7 @@ A command-line interface to do random stuff. Generate random strings and numbers
     - [Examples](#examples-4)
   - [💻 Shuffle](#-shuffle)
     - [Arguments](#arguments-3)
+    - [Flags](#flags-5)
     - [Examples](#examples-5)
 - [📑 License](#-license)
 
@@ -79,6 +80,8 @@ gh repo list | random select
 
 `--repeat, -r`: Number of times to repeat the execution of this command.
 
+`--separator, -s`: Separator to use to format the results (default: `\n`)
+
 ```sh
 gh repo list | random select --repeat 3
 ```
@@ -111,6 +114,8 @@ random number [NUM1] [NUM2]
 
 `--repeat, -r`: Number of times to repeat the execution of this command.
 
+`--separator, -s`: Separator to use to format the results (default: `\n`)
+
 #### Examples
 
 ```sh
@@ -136,6 +141,8 @@ random string
 
 `--repeat, -r`: Number of times to repeat the execution of this command.
 
+`--separator, -s`: Separator to use to format the results (default: `\n`)
+
 #### Examples
 
 ```sh
@@ -160,6 +167,7 @@ random toss
 
 `--repeat, -r`: Number of times to repeat the execution of this command.
 
+`--separator, -s`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 
@@ -217,6 +225,10 @@ Can also accept input from a redirected stdin.
 ```sh
 gh repo list | random shuffle
 ```
+
+#### Flags
+
+`--separator, -s`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 

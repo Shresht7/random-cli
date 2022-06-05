@@ -23,11 +23,11 @@ pub struct Roll {
     die: Option<String>,
 
     /// Roll the die with advantage. Take the greatest value
-    #[clap(short='a', long)]
+    #[clap(short = 'a', long)]
     with_advantage: bool,
 
     /// Roll the die with disadvantage. Take the smallest value
-    #[clap(short='d', long)]
+    #[clap(short = 'd', long)]
     with_disadvantage: bool,
 }
 

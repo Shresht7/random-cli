@@ -22,6 +22,10 @@ pub struct Select {
     /// The number of times to repeat the execution
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
+
+    /// String to use to separate results
+    #[clap(short, long, default_value = "\n")]
+    separator: String,
 }
 
 impl Select {
@@ -37,7 +41,7 @@ impl Select {
                 .iter()
                 .map(|(v, _)| v.to_owned())
                 .collect::<Vec<String>>()
-                .join("\n"),
+                .join(&self.separator),
 
             false => select::select(&entries).0,
         };
