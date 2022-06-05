@@ -1,4 +1,4 @@
-# Random CLI
+# Random
 
 A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas. There is probably something in your life that can use a bit of randomness.
 
@@ -8,7 +8,7 @@ A command-line interface to do random stuff. Generate random strings and numbers
 random [COMMAND] [FLAGS]
 ```
 
-Use the `help` command to see more details. `random help` or `random --help` or `random [COMMAND] --help`.
+Use the `help` command (or `--help, -h` flag) to see more details. `random help` or `random --help` or `random [COMMAND] --help`.
 
 ---
 
@@ -46,7 +46,7 @@ gh repo list | random select
 
 #### Flags
 
-`--repeat`: Number of times to repeat the execution of this command.
+`--repeat, -r`: Number of times to repeat the execution of this command.
 
 ```sh
 gh repo list | random select --repeat 3
@@ -78,7 +78,7 @@ random number [NUM1] [NUM2]
 
 #### Flags
 
-`--repeat`: Number of times to repeat the execution of this command.
+`--repeat, -r`: Number of times to repeat the execution of this command.
 
 #### Examples
 
@@ -99,9 +99,11 @@ random string
 
 #### Flags
 
-`--length`: Specify the length of the generated strings (default: `16`).
+`--length, -l`: Specify the length of the generated strings (default: `16`).
 
-`--repeat`: Number of times to repeat the execution of this command.
+`--charset, -c`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`.
+
+`--repeat, -r`: Number of times to repeat the execution of this command.
 
 #### Examples
 
@@ -121,11 +123,11 @@ random toss
 
 #### Flags
 
-`--weight`: Probabilistic weight of getting `true` (default: `0.5`)
+`--weight, -w`: Probabilistic weight of getting `true` (default: `0.5`)
 
-`--coin`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
+`--coin, -c`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
 
-`--repeat`: Number of times to repeat the execution of this command.
+`--repeat, -r`: Number of times to repeat the execution of this command.
 
 
 #### Examples
@@ -150,11 +152,17 @@ Roll die `[DIE]` accepts input in the `{n}d{S}` format; where `{n}` is the numbe
 
 default: `1d20`
 
+#### Flags
+
+`--with-advantage, -a`: Rolls the die with advantage. Takes the greatest value.
+
+`--with-disadvantage, -d`: Rolls the die with disadvantage. Takes the smallest value.
+
 #### Examples
 
 ```sh
 random roll                         # Rolls a 1d20
-random roll 3d8                     # Rolls 3d8
+random roll 3d8 --with-advantage    # Rolls 3d8 with advantage
 ```
 
 ### 💻 Shuffle
@@ -182,8 +190,8 @@ gh repo list | random shuffle
 #### Examples
 
 ```sh
-random shuffle 1 2 3 4 5 6 7 8 9        # Selects either pizza, burger or pasta
-gh repo list | random shuffle           # Select one entry piped through stdin
+random shuffle 1 2 3 4 5 6 7 8 9        # Shuffles the numbers 8 5 9 1 7 3 6 4 2
+gh repo list | random shuffle           # Shuffles the repository list
 ```
 
 ---

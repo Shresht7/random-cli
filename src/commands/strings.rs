@@ -47,7 +47,7 @@ impl Strings {
 /// Implement FromStr trait for Charset to allow mapping
 ///  command-line argument strings to the Charset enum
 impl FromStr for strings::Charset {
-    type Err = clap::Error;     //? Handle the error properly
+    type Err = clap::Error; //? Handle the error properly
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_lowercase().as_str() {
@@ -58,7 +58,7 @@ impl FromStr for strings::Charset {
             "alphanumeric" => Ok(Self::Alphanumeric),
             "special" => Ok(Self::Special),
             "all" => Ok(Self::All),
-            _ => Ok(Self::All),     //? Should let the user know that this was an invalid charset
+            _ => Ok(Self::All), //? Should let the user know that this was an invalid charset
         }
     }
 }
