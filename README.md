@@ -1,6 +1,36 @@
-# Random
+<h1>Random</h1>
 
 A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas. There is probably something in your life that can use a bit of randomness.
+
+<details>
+    <summary>Table of Contents</summary>
+
+- [📖 Usage](#-usage)
+- [🖋 Commands](#-commands)
+  - [💻 Select](#-select)
+    - [Arguments](#arguments)
+    - [Flags](#flags)
+    - [Examples](#examples)
+  - [💻 Number](#-number)
+    - [Arguments](#arguments-1)
+    - [Flags](#flags-1)
+    - [Examples](#examples-1)
+  - [💻 String](#-string)
+    - [Flags](#flags-2)
+    - [Examples](#examples-2)
+  - [💻 Toss](#-toss)
+    - [Flags](#flags-3)
+    - [Examples](#examples-3)
+  - [💻 Roll](#-roll)
+    - [Arguments](#arguments-2)
+    - [Flags](#flags-4)
+    - [Examples](#examples-4)
+  - [💻 Shuffle](#-shuffle)
+    - [Arguments](#arguments-3)
+    - [Examples](#examples-5)
+- [📑 License](#-license)
+
+</details>
 
 ## 📖 Usage
 
@@ -14,13 +44,14 @@ Use the `help` command (or `--help, -h` flag) to see more details. `random help`
 
 ## 🖋 Commands
 
-| Command             | Description                           |
-| ------------------- | ------------------------------------- |
-| [`select`](#select) | Select one entry from a list randomly |
-| [`number`](#number) | Generate a random number              |
-| [`string`](#string) | Generate a random string              |
-| [`toss`](#toss)     | Toss a coin                           |
-| [`roll`](#roll)     | Roll a die                            |
+| Command               | Description                           |
+| --------------------- | ------------------------------------- |
+| [`select`](#select)   | Select one entry from a list randomly |
+| [`number`](#number)   | Generate a random number              |
+| [`string`](#string)   | Generate a random string              |
+| [`toss`](#toss)       | Toss a coin                           |
+| [`roll`](#roll)       | Roll a die                            |
+| [`shuffle`](#shuffle) | Shuffles the given list               |
 
 ### 💻 Select
 
