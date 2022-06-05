@@ -25,11 +25,15 @@ pub struct Toss {
     /// Number of times to repeat command execution
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
+
+    /// String to use to separate results
+    #[clap(short, long, default_value = "\n")]
+    separator: String,
 }
 
 impl Toss {
     pub fn execute(&self) {
-        let mut result: Vec<String> = Vec::new();   //  Vector to store the results
+        let mut result: Vec<String> = Vec::new(); //  Vector to store the results
 
         let mut rng = rand::thread_rng();
 
@@ -51,6 +55,6 @@ impl Toss {
         }
 
         //  Show results
-        println!("{}", result.join("\n"));
+        println!("{}", result.join(&self.separator));
     }
 }

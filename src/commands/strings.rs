@@ -23,6 +23,10 @@ pub struct Strings {
     /// Number of times to repeat command execution
     #[clap(short, long, default_value_t = 1)]
     repeat: u8,
+
+    /// String to use to separate results
+    #[clap(short, long, default_value = "\n")]
+    separator: String,
 }
 
 impl Strings {
@@ -36,7 +40,7 @@ impl Strings {
         }
 
         //  Show results
-        println!("{}", result.join("\n"));
+        println!("{}", result.join(&self.separator));
     }
 }
 
