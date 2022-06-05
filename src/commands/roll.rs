@@ -43,7 +43,7 @@ impl Roll {
         let mut result = die::roll(&die);
 
         //  Show results
-        println!("Rolls: {:?} = {}", result, result.iter().sum::<u32>());
+        println!("Rolls: {:?} = {}", result, result.iter().sum::<u8>());
 
         result.sort();
 

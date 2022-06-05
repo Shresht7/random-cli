@@ -6,7 +6,7 @@ use rand::Rng;
 // ====
 
 /// Rolls the dice and returns the results as a Vector
-pub fn roll(die: &str) -> Vec<u32> {
+pub fn roll(die: &str) -> Vec<u8> {
     let (number_of_die, range_of_die) = get_die_count_and_range(&die);
 
     //  Calculate and return result
@@ -23,20 +23,20 @@ pub fn roll(die: &str) -> Vec<u32> {
 // ----------------
 
 /// Determine the number of dice and their type (e.g. 3d8 -> (3, 8) - Three 8-sided dice)
-pub fn get_die_count_and_range(die: &str) -> (u32, u32) {
+pub fn get_die_count_and_range(die: &str) -> (u8, u8) {
     //  Split string and retrieve die count ...
     let mut die_split = die.split("d");
-    let number_of_die: u32 = match die_split.next() {
-        Some(x) => x.parse::<u32>().expect("Failed to parse as u32"),
+    let number_of_die = match die_split.next() {
+        Some(x) => x.parse::<u8>().expect("Failed to parse as u8"),
         None => 1,
     };
 
     //  ... and range
-    let range_of_die: u32 = die_split
+    let range_of_die = die_split
         .next()
         .expect("failed to retrieve range")
-        .parse::<u32>()
-        .expect("Failed to parse as u32");
+        .parse::<u8>()
+        .expect("Failed to parse as u8");
 
     return (number_of_die, range_of_die);
 }
