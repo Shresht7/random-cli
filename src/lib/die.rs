@@ -23,7 +23,7 @@ pub fn roll(die: &str) -> Vec<u32> {
 // ----------------
 
 /// Determine the number of dice and their type (e.g. 3d8 -> (3, 8) - Three 8-sided dice)
-fn get_die_count_and_range(die: &str) -> (u32, u32) {
+pub fn get_die_count_and_range(die: &str) -> (u32, u32) {
     //  Split string and retrieve die count ...
     let mut die_split = die.split("d");
     let number_of_die: u32 = match die_split.next() {
