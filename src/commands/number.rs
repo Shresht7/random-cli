@@ -1,6 +1,6 @@
 //  Library
-use crate::lib::numbers;
 use clap::Args;
+use lib::numbers;
 
 // ======
 // NUMBER

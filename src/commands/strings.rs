@@ -1,7 +1,6 @@
 //  Library
-use crate::lib::strings;
 use clap::Args;
-use std::str::FromStr;
+use lib::strings;
 
 // ======
 // STRING
@@ -41,28 +40,5 @@ impl Strings {
 
         //  Show results
         println!("{}", result.join(&self.separator));
-    }
-}
-
-//  =========
-//  UTILITIES
-//  =========
-
-/// Implement FromStr trait for Charset to allow mapping
-///  command-line argument strings to the Charset enum
-impl FromStr for strings::Charset {
-    type Err = clap::Error; //? Handle the error properly
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s.to_lowercase().as_str() {
-            "lowercase" => Ok(Self::LowercaseAlphabets),
-            "uppercase" => Ok(Self::UppercaseAlphabets),
-            "alphabets" => Ok(Self::Alphabets),
-            "numbers" => Ok(Self::Numbers),
-            "alphanumeric" => Ok(Self::Alphanumeric),
-            "special" => Ok(Self::Special),
-            "all" => Ok(Self::All),
-            _ => Ok(Self::All), //? Should let the user know that this was an invalid charset
-        }
     }
 }

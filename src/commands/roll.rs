@@ -1,6 +1,6 @@
 //  Library
-use crate::lib::die;
 use clap::Args;
+use lib::die;
 
 //  ====
 //  ROLL

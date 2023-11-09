@@ -1,6 +1,7 @@
 //  Library
 use rand::distributions::Alphanumeric;
 use rand::Rng;
+use std::str::FromStr;
 
 //  --------------
 //  CHARACTER SETS
@@ -14,6 +15,7 @@ pub const ALPHANUMERIC: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
 pub const SPECIAL: &[u8] = b")(*&^%$#@!~";
 pub const ALL: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890)(*&^%$#@!~";
 
+#[derive(Clone)]
 pub enum Charset {
     LowercaseAlphabets,
     UppercaseAlphabets,
@@ -36,6 +38,25 @@ impl Charset {
             Charset::Special => SPECIAL,
             Charset::All => ALL,
             Charset::Custom(charset) => charset,
+        }
+    }
+}
+
+/// Implement FromStr trait for Charset to allow mapping
+///  command-line argument strings to the Charset enum
+impl FromStr for Charset {
+    type Err = clap::Error; //? Handle the error properly
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_lowercase().as_str() {
+            "lowercase" => Ok(Self::LowercaseAlphabets),
+            "uppercase" => Ok(Self::UppercaseAlphabets),
+            "alphabets" => Ok(Self::Alphabets),
+            "numbers" => Ok(Self::Numbers),
+            "alphanumeric" => Ok(Self::Alphanumeric),
+            "special" => Ok(Self::Special),
+            "all" => Ok(Self::All),
+            _ => Ok(Self::All), //? Should let the user know that this was an invalid charset
         }
     }
 }
