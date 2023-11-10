@@ -1,6 +1,6 @@
 <h1>Random</h1>
 
-A command-line interface to do random stuff. Generate random strings and numbers, flip a coin, make decisions and resolve dilemmas. There is probably something in your life that can use a bit of randomness.
+A command-line interface for when you need some randomness. Generate random strings and numbers, flip a coin, roll dice, or select one of many.
 
 <details>
     <summary>Table of Contents</summary>
