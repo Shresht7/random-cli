@@ -20,7 +20,7 @@ pub struct Select {
     entries: Vec<String>,
 
     /// The number of times to repeat the execution
-    #[clap(short, long, short_aliases=['c'], aliases=["count"],default_value_t = 1)]
+    #[clap(short, long, short_aliases=['c'], aliases=["count"], default_value_t = 1)]
     repeat: u8,
 
     /// String to use to separate results
