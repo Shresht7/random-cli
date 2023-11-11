@@ -78,7 +78,7 @@ gh repo list | random select
 
 #### Flags
 
-`--repeat, -r`: Number of times to repeat the execution of this command.
+`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
 `--separator, -s`: Separator to use to format the results (default: `\n`)
 
@@ -112,7 +112,7 @@ random number [NUM1] [NUM2]
 
 #### Flags
 
-`--repeat, -r`: Number of times to repeat the execution of this command.
+`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
 `--separator, -s`: Separator to use to format the results (default: `\n`)
 
@@ -139,7 +139,7 @@ random string
 
 `--charset, -c`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`.
 
-`--repeat, -r`: Number of times to repeat the execution of this command.
+`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
 `--separator, -s`: Separator to use to format the results (default: `\n`)
 
@@ -165,7 +165,7 @@ random toss
 
 `--coin, -c`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
 
-`--repeat, -r`: Number of times to repeat the execution of this command.
+`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
 `--separator, -s`: Separator to use to format the results (default: `\n`)
 
