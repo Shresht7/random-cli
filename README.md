@@ -138,7 +138,7 @@ random string
 
 `--length, -l`: Specify the length of the generated strings (default: `16`).
 
-`--charset, -c`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`. If the charset is anything other than the specified options, the literal characters itself are used as the charset.
+`--charset`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`. If the charset is anything other than the specified options, the literal characters itself are used as the charset.
 
 `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
@@ -164,7 +164,7 @@ random toss
 
 `--weight, -w`: Probabilistic weight of getting `true` (default: `0.5`)
 
-`--coin, -c`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
+`--coin`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
 
 `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
