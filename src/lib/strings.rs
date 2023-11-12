@@ -24,7 +24,7 @@ pub enum Charset {
     Alphanumeric,
     Special,
     All,
-    Custom(&'static [u8]),
+    Custom(Vec<u8>),
 }
 
 impl Charset {
@@ -37,7 +37,7 @@ impl Charset {
             Charset::Alphanumeric => ALPHANUMERIC,
             Charset::Special => SPECIAL,
             Charset::All => ALL,
-            Charset::Custom(charset) => charset,
+            Charset::Custom(charset) => charset.as_slice(),
         }
     }
 }
@@ -56,7 +56,7 @@ impl FromStr for Charset {
             "alphanumeric" => Ok(Self::Alphanumeric),
             "special" => Ok(Self::Special),
             "all" => Ok(Self::All),
-            _ => Ok(Self::All), //? Should let the user know that this was an invalid charset
+            x => Ok(Self::Custom(x.as_bytes().to_owned())),
         }
     }
 }
@@ -146,7 +146,7 @@ mod tests {
     #[test]
     fn generate_using_custom_charset() {
         let length = 5;
-        let res = generate_random(&Charset::Custom(b"111"), length);
+        let res = generate_random(&Charset::Custom(b"111".to_vec()), length);
         assert_eq!(
             res,
             "1".repeat(length),
