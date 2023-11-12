@@ -35,5 +35,6 @@ fn main() {
         Commands::Shuffle(command) => command.execute(),
         Commands::String(command) => command.execute(),
         Commands::Toss(command) => command.execute(),
+        Commands::Uuid(command) => command.execute(),
     }
 }
