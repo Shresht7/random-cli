@@ -138,7 +138,7 @@ random string
 
 `--length, -l`: Specify the length of the generated strings (default: `16`).
 
-`--charset, -c`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`.
+`--charset, -c`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`. If the charset is anything other than the specified options, the literal characters itself are used as the charset.
 
 `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
