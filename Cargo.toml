@@ -6,7 +6,7 @@ edition = "2021"
 
 [[bin]]
 name = "random"
-src = "src/main.rs"
+path = "src/bin/main.rs"
 
 [lib]
 name = "random"
