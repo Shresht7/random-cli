@@ -19,7 +19,7 @@ pub struct Toss {
     weight: f64,
 
     /// Results in Heads or Tails
-    #[clap(short, long)]
+    #[clap(long)]
     coin: bool,
 
     /// Number of times to repeat command execution

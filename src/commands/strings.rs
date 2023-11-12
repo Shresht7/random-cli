@@ -16,7 +16,7 @@ pub struct Strings {
     #[clap(short, long, default_value_t = 16)]
     length: u8,
 
-    #[clap(short, long, default_value = "all")]
+    #[clap(long, default_value = "all")]
     charset: strings::Charset,
 
     /// Number of times to repeat command execution
