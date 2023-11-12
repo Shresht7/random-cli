@@ -29,6 +29,10 @@ pub struct Roll {
     /// Roll the die with disadvantage. Take the smallest value
     #[clap(short = 'd', long)]
     with_disadvantage: bool,
+
+    /// Difficulty check. The rolls total must be higher than this value to succeed
+    #[clap(short = 'c', long, default_value_t = 0)]
+    difficulty_check: u8,
 }
 
 impl Roll {
@@ -39,20 +43,35 @@ impl Roll {
             None => String::from("1d20"),
         };
 
-        //  Roll the die
+        //  Roll the die and determine the total
         let mut result = die::roll(&die);
+        let mut total: &u8 = &result.iter().sum::<u8>();
 
         //  Show results
-        println!("Rolls: {:?} = {}", result, result.iter().sum::<u8>());
+        println!("Rolls: {:?} = {}", result, total);
 
-        result.sort();
+        result.sort(); // Sort the results to easily determine advantage and disadvantage
 
+        // If rolling with advantage...
         if self.with_advantage {
-            println!("With Advantage: {}", result.last().unwrap());
+            total = result.last().unwrap();
+            println!("With Advantage: {}", total);
         }
 
+        // If rolling with disadvantage...
         if self.with_disadvantage {
-            println!("With Disadvantage: {}", result.first().unwrap());
+            total = result.first().unwrap();
+            println!("With Disadvantage: {}", total);
+        }
+
+        // If a difficulty check is present, print Success or Failure based on the results
+        if self.difficulty_check > 0 {
+            println!("Difficulty: {}", self.difficulty_check);
+            if total >= &self.difficulty_check {
+                println!("Success")
+            } else {
+                println!("Failure")
+            }
         }
     }
 }
