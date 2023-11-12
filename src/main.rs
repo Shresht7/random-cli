@@ -1,7 +1,11 @@
 //  Library
 use clap::Parser;
 
+// Modules
 mod commands;
+mod helpers;
+
+// Imports
 use commands::Commands;
 
 //  ----------------------

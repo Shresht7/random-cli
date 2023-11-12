@@ -1,6 +1,7 @@
 //  Library
+use crate::helpers;
 use clap::Args;
-use random::{helpers, shuffle};
+use random::shuffle;
 
 //  =======
 //  SHUFFLE
