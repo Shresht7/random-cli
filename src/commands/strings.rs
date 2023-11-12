@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use lib::strings;
+use random::strings;
 
 // ======
 // STRING

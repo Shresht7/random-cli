@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use lib::numbers;
+use random::numbers;
 
 // ======
 // NUMBER

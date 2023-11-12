@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use lib::{helpers, shuffle};
+use random::{helpers, shuffle};
 
 //  =======
 //  SHUFFLE

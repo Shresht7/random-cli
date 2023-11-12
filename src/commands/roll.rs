@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use lib::die;
+use random::die;
 
 //  ====
 //  ROLL
