@@ -1,35 +1,36 @@
-<h1>Random</h1>
+# `random`
 
 A command-line interface for when you need some randomness. Generate random strings and numbers, flip a coin, roll dice, or select one of many.
 
 <details>
     <summary>Table of Contents</summary>
 
-- [📖 Usage](#-usage)
-- [🖋 Commands](#-commands)
-  - [💻 Select](#-select)
-    - [Arguments](#arguments)
-    - [Flags](#flags)
-    - [Examples](#examples)
-  - [💻 Number](#-number)
-    - [Arguments](#arguments-1)
-    - [Flags](#flags-1)
-    - [Examples](#examples-1)
-  - [💻 String](#-string)
-    - [Flags](#flags-2)
-    - [Examples](#examples-2)
-  - [💻 Toss](#-toss)
-    - [Flags](#flags-3)
-    - [Examples](#examples-3)
-  - [💻 Roll](#-roll)
-    - [Arguments](#arguments-2)
-    - [Flags](#flags-4)
-    - [Examples](#examples-4)
-  - [💻 Shuffle](#-shuffle)
-    - [Arguments](#arguments-3)
-    - [Flags](#flags-5)
-    - [Examples](#examples-5)
-- [📑 License](#-license)
+- [`random`](#random)
+  - [📖 Usage](#-usage)
+  - [🖋 Commands](#-commands)
+    - [💻 Select](#-select)
+      - [Arguments](#arguments)
+      - [Flags](#flags)
+      - [Examples](#examples)
+    - [💻 Number](#-number)
+      - [Arguments](#arguments-1)
+      - [Flags](#flags-1)
+      - [Examples](#examples-1)
+    - [💻 String](#-string)
+      - [Flags](#flags-2)
+      - [Examples](#examples-2)
+    - [💻 Toss](#-toss)
+      - [Flags](#flags-3)
+      - [Examples](#examples-3)
+    - [💻 Roll](#-roll)
+      - [Arguments](#arguments-2)
+      - [Flags](#flags-4)
+      - [Examples](#examples-4)
+    - [💻 Shuffle](#-shuffle)
+      - [Arguments](#arguments-3)
+      - [Flags](#flags-5)
+      - [Examples](#examples-5)
+  - [📑 License](#-license)
 
 </details>
 
