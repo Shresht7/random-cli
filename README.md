@@ -19,17 +19,19 @@ A command-line interface for when you need some randomness. Generate random stri
     - [💻 String](#-string)
       - [Flags](#flags-2)
       - [Examples](#examples-2)
+    - [💻 UUID](#-uuid)
+      - [Examples](#examples-3)
     - [💻 Toss](#-toss)
       - [Flags](#flags-3)
-      - [Examples](#examples-3)
+      - [Examples](#examples-4)
     - [💻 Roll](#-roll)
       - [Arguments](#arguments-2)
       - [Flags](#flags-4)
-      - [Examples](#examples-4)
+      - [Examples](#examples-5)
     - [💻 Shuffle](#-shuffle)
       - [Arguments](#arguments-3)
       - [Flags](#flags-5)
-      - [Examples](#examples-5)
+      - [Examples](#examples-6)
   - [📑 License](#-license)
 
 </details>
@@ -51,6 +53,7 @@ Use the `help` command (or `--help, -h` flag) to see more details. `random help`
 | [`select`](#select)   | Select one entry from a list randomly |
 | [`number`](#number)   | Generate a random number              |
 | [`string`](#string)   | Generate a random string              |
+| [`uuid`](#uuid)       | Generate a random UUID/GUID           |
 | [`toss`](#toss)       | Toss a coin                           |
 | [`roll`](#roll)       | Roll a die                            |
 | [`shuffle`](#shuffle) | Shuffles the given list               |
@@ -79,9 +82,9 @@ gh repo list | random select
 
 #### Flags
 
-`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
+- `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
-`--separator, -s`: Separator to use to format the results (default: `\n`)
+- `--separator, -s` or `--delimiter, -d`: Separator to use to format the results (default: `\n`)
 
 ```sh
 gh repo list | random select --repeat 3
@@ -113,9 +116,9 @@ random number [NUM1] [NUM2]
 
 #### Flags
 
-`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
+- `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
-`--separator, -s`: Separator to use to format the results (default: `\n`)
+- `--separator, -s` or `--delimiter, -d`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 
@@ -136,13 +139,13 @@ random string
 
 #### Flags
 
-`--length, -l`: Specify the length of the generated strings (default: `16`).
+- `--length, -l`: Specify the length of the generated strings (default: `16`).
 
-`--charset`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`. If the charset is anything other than the specified options, the literal characters itself are used as the charset.
+- `--charset`: Specify the character-set to use. options: `lowercase`, `uppercase`, `alphabets`, `numbers`, `alphanumeric`, `special` and `all`. If the charset is anything other than the specified options, the literal characters itself are used as the charset.
 
-`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
+- `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
-`--separator, -s`: Separator to use to format the results (default: `\n`)
+- `--separator, -s` or `--delimiter, -d`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 
@@ -150,6 +153,23 @@ random string
 random string                           # Generates a random 16-character string
 random string --length 8                # Generates a radom 8-character string
 random string --length 8 --repeat 3     # Generates three 8-character strings
+```
+
+### 💻 UUID
+
+Generate a random UUID/GUID
+
+```sh
+random uuid
+# or
+random guid
+```
+
+#### Examples
+
+```sh
+random uuid   # Generates a random uuid
+random guid   # Does the same thing. guid is an alias for uuid
 ```
 
 ### 💻 Toss
@@ -162,13 +182,13 @@ random toss
 
 #### Flags
 
-`--weight, -w`: Probabilistic weight of getting `true` (default: `0.5`)
+- `--weight, -w`: Probabilistic weight of getting `true` (default: `0.5`)
 
-`--coin`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
+- `--coin`: Reformats the result as `Heads` or `Tails` (instead of `true` or `false`)
 
-`--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
+- `--repeat, -r` or `--count, -c`: Number of times to repeat the execution of this command.
 
-`--separator, -s`: Separator to use to format the results (default: `\n`)
+- `--separator, -s` or `--delimiter, -d`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 
@@ -188,21 +208,26 @@ random roll [DIE]
 
 #### Arguments
 
-Roll die `[DIE]` accepts input in the `{n}d{S}` format; where `{n}` is the number of dice thrown and `{S}` is the number of sides each die has. (example: `3d8` - Three 8-sided die)
+Roll die `[DIE]` accepts input in the `{n}d{S}+X` format; where `{n}` is the number of dice thrown and `{S}` is the number of sides each die has and `{X}` is the number to add to the result. (example: `3d8` - Three 8-sided die, 2d6+4 - Two 6-sided dice and add 4 to the result)
 
 default: `1d20`
 
 #### Flags
 
-`--with-advantage, -a`: Rolls the die with advantage. Takes the greatest value.
+- `--with-advantage, -a`: Rolls the die with advantage. Takes the greatest value.
 
-`--with-disadvantage, -d`: Rolls the die with disadvantage. Takes the smallest value.
+- `--with-disadvantage, -d`: Rolls the die with disadvantage. Takes the smallest value.
+
+- `--difficulty-check`: Difficulty check. The rolls total must be higher than this value to succeed.
 
 #### Examples
 
 ```sh
 random roll                         # Rolls a 1d20
 random roll 3d8 --with-advantage    # Rolls 3d8 with advantage
+random roll 1d8+5                   # Rolls a 1d8 and adds 5
+random roll 1d8+2d6+3               # Rolls 1d8 and 2d6 and adds 3 to the results
+random roll 2d8 --difficulty-check 10 # Roll 2d8 and check against 10 
 ```
 
 ### 💻 Shuffle
@@ -229,7 +254,7 @@ gh repo list | random shuffle
 
 #### Flags
 
-`--separator, -s`: Separator to use to format the results (default: `\n`)
+- `--separator, -s` or `--delimiter, -d`: Separator to use to format the results (default: `\n`)
 
 #### Examples
 
@@ -242,4 +267,4 @@ gh repo list | random shuffle           # Shuffles the repository list
 
 ## 📑 License
 
-> [MIT License](./LICENSE)
+This project is licensed under the [MIT License](./LICENSE).
