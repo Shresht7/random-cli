@@ -30,7 +30,7 @@ pub struct Number {
     repeat: u8,
 
     /// String to use to separate results
-    #[clap(short, long, default_value = "\n")]
+    #[clap(short, long, short_aliases=['d'], aliases=["delimiter"], default_value = "\n")]
     separator: String,
 }
 
