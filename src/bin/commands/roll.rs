@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use random::die;
+use random::roll;
 
 //  ====
 //  ROLL
@@ -55,7 +55,7 @@ impl Roll {
             // If this is a dice term ...
             if term.to_lowercase().contains("d") {
                 // Roll the dice
-                let mut roll = die::roll(&term);
+                let mut roll = roll::roll(&term);
 
                 if &terms[0] != term {
                     print!("\n");
