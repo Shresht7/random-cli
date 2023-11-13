@@ -21,7 +21,7 @@ pub struct Shuffle {
     entries: Vec<String>,
 
     /// String to use to separate results
-    #[clap(short, long, default_value = " ")]
+    #[clap(short, long, aliases=["delimiter"], default_value = " ")]
     separator: String,
 }
 
