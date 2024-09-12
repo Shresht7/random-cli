@@ -9,6 +9,11 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: monthly
+    groups:
+      dependencies:
+        update-types:
+          - "minor"
+          - "patch"
     # open-pull-requests-limit: 0     # Disable version updates for dependencies
 
   - package-ecosystem: "github-actions" # See documentation for possible values
