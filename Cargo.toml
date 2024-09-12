@@ -1,5 +1,6 @@
 [package]
 name = "random"
+description = "A command-line interface for when you need some randomness"
 author = "Shresht7"
 version = "1.0.0"
 edition = "2021"
