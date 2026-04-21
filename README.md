@@ -231,6 +231,13 @@ gh repo list | random shuffle           # Shuffles the repository list
 
 ---
 
+## 📕 Reference
+
+- https://docs.rs/rand/latest/rand/
+- https://rust-random.github.io/book/
+
+---
+
 ## 📑 License
 
 This project is licensed under the [MIT License](./LICENSE).
