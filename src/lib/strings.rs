@@ -1,6 +1,6 @@
 //  Library
-use rand::distributions::Alphanumeric;
-use rand::Rng;
+use rand::distr::Alphanumeric;
+use rand::RngExt;
 use std::str::FromStr;
 
 //  --------------
@@ -67,14 +67,14 @@ impl FromStr for Charset {
 
 /// Generate a random string of given length
 pub fn generate_random(charset: &Charset, length: usize) -> String {
-    let mut rng = rand::thread_rng(); //  Initialize RNG
+    let mut rng = rand::rng(); //  Initialize RNG
 
     let charset = charset.get(); //  Fetch Character Set
 
     //  Generate string using the charset
     (00..length)
         .map(|_| {
-            let index = rng.gen_range(00..charset.len());
+            let index = rng.random_range(00..charset.len());
             charset[index] as char
         })
         .collect()
@@ -82,7 +82,7 @@ pub fn generate_random(charset: &Charset, length: usize) -> String {
 
 /// Generate a random alphanumeric string of given length
 pub fn generate_alphanumeric(length: usize) -> String {
-    rand::thread_rng()
+    rand::rng()
         .sample_iter(&Alphanumeric)
         .take(length)
         .map(char::from)

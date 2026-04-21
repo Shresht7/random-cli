@@ -1,5 +1,5 @@
 //  Library
-use rand::Rng;
+use rand::RngExt;
 
 //  ======
 //  SELECT
@@ -8,7 +8,7 @@ use rand::Rng;
 /// Select a single entry from a vector
 pub fn select<T: Clone>(vector: &Vec<T>) -> (T, usize) {
     //  Select one entry at random
-    let index = rand::thread_rng().gen_range(00..vector.len());
+    let index = rand::rng().random_range(00..vector.len());
     return (vector[index].clone(), index);
 }
 

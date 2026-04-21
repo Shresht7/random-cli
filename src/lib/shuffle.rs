@@ -1,5 +1,5 @@
 //  Library
-use rand::Rng;
+use rand::RngExt;
 
 //  =======
 //  SHUFFLE
@@ -10,10 +10,10 @@ pub fn shuffle<T: Clone>(vector: &Vec<T>) -> Vec<T> {
     let mut vector = vector.clone(); //  Mutable clone
     let mut shuffle: Vec<T> = Vec::new(); //  Shuffled Vector
 
-    let mut rng = rand::thread_rng(); //  Initialize RNG
+    let mut rng = rand::rng(); //  Initialize RNG
 
     while vector.len() > 0 {
-        let index = rng.gen_range(0..vector.len());
+        let index = rng.random_range(0..vector.len());
         shuffle.push(vector[index].clone());
         vector.remove(index);
     }

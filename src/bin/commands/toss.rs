@@ -1,6 +1,6 @@
 //  Library
 use clap::Args;
-use rand::{self, Rng};
+use rand::{self, RngExt};
 
 // ====
 // TOSS
@@ -35,11 +35,11 @@ impl Toss {
     pub fn execute(&self) {
         let mut result: Vec<String> = Vec::new(); //  Vector to store the results
 
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
 
         //  Toss
         for _ in 00..self.repeat {
-            let b: bool = rng.gen_bool(self.weight);
+            let b: bool = rng.random_bool(self.weight);
 
             if self.coin {
                 //  If --coin, reformat results as Heads / Tails

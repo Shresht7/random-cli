@@ -1,5 +1,5 @@
 //  Library
-use rand::Rng;
+use rand::RngExt;
 
 // ====
 // ROLL
@@ -12,7 +12,7 @@ pub fn roll(die: &str) -> Vec<u8> {
     //  Calculate and return result
     let mut result = Vec::new();
     for _ in 0..number_of_die {
-        let n = rand::thread_rng().gen_range(1..=range_of_die);
+        let n = rand::rng().random_range(1..=range_of_die);
         result.push(n);
     }
     return result;
