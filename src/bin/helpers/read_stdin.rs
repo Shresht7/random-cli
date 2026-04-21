@@ -1,6 +1,5 @@
 //  Library
-use is_terminal::IsTerminal;
-use std::io::Read;
+use std::io::{IsTerminal, Read};
 
 /// Read Stdin and append lines to the given vector
 pub fn read_stdin_into(vector: &mut Vec<String>) {
